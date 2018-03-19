@@ -8,15 +8,17 @@ import org.springframework.stereotype.Service;
 import com.jackson.cursoemc.domain.Categoria;
 import com.jackson.cursoemc.repositories.CategoriaRepository;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 @Service
 public class CategoriaService {
 	
 	@Autowired
 	private CategoriaRepository repo;
 
-	public Categoria buscar(Integer id) {
-		
+	public Categoria buscar(Integer id)  {
 		Optional<Categoria> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new com.jackson.cursoemc.services.exception.ObjectNotFoundException(
+					"Objeto não encontrado! id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 }
