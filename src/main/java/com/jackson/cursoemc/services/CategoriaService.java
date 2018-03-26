@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.jackson.cursoemc.domain.Categoria;
 import com.jackson.cursoemc.repositories.CategoriaRepository;
 
-import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
