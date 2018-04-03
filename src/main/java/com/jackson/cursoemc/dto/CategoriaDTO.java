@@ -3,7 +3,7 @@ package com.jackson.cursoemc.dto;
 import java.io.Serializable;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 
 import com.jackson.cursoemc.domain.Categoria;
 
