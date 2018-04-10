@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.jackson.cursoemc.domain.Categoria;
 import com.jackson.cursoemc.domain.Cliente;
 import com.jackson.cursoemc.dto.ClenteNewDTO;
 import com.jackson.cursoemc.dto.ClienteDTO;
