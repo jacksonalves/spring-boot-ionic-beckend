@@ -39,6 +39,9 @@ public class PedidoService {
 	@Autowired
 	private EmailService emailService;
 	
+	@Autowired
+	private SmtpEmailService smtpEmailService;
+	
 	public Pedido find(Integer id)  {
 		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new com.jackson.cursoemc.services.exception.ObjectNotFoundException(
