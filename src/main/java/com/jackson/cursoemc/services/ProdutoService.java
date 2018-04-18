@@ -39,6 +39,7 @@ public class ProdutoService {
 	
 	@Transactional(readOnly=true)
 	public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
+				@SuppressWarnings("deprecation")
 				PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 				List<Categoria> categorias = categoriaRepository.findAllById(ids);
 				return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);	
