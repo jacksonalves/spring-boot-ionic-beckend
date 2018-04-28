@@ -39,6 +39,7 @@ public class PedidoService {
 	@Autowired
 	private EmailService emailService;
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private SmtpEmailService smtpEmailService;
 	
