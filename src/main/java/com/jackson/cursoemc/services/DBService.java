@@ -131,7 +131,7 @@ public class DBService {
 		Cliente cli1 = new Cliente(null, "Maria Silva", "jacksonalves31@gmail.com", "3364487525", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		
 		
-		Cliente cli2 = new Cliente(null, "Ana Costa", "jacksondanielson@gmail.com", "31628382740", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		Cliente cli2 = new Cliente(null, "Ana Costa", "jacksondanielson123@gmail.com", "31628382740", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli2.addPerfil(Perfil.ADMIN);
 		cli2.getTelefones().addAll(Arrays.asList("27363389", "93838399"));
 		
@@ -140,10 +140,10 @@ public class DBService {
 		Endereco e3 = new Endereco(null, "avenida Floriano", "360", "Sala 00", "uberlandia", "38777058", cli2, c2);
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
-		cli2.getEnderecos().addAll(Arrays.asList(e1, e2, e3));
+		cli2.getEnderecos().addAll(Arrays.asList(e3));
 		
 		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
-		enderecoRepository.saveAll(Arrays.asList(e1, e2));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2,e3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		
