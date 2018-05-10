@@ -28,6 +28,7 @@ import com.jackson.cursoemc.repositories.EnderecoRepository;
 import com.jackson.cursoemc.security.UserSS;
 import com.jackson.cursoemc.services.exception.AuthorizationException;
 import com.jackson.cursoemc.services.exception.DataIntegrityException;
+import com.jackson.cursoemc.services.exception.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
@@ -52,6 +53,7 @@ public class ClienteService {
 	
 	@Value("${img.profile.size}")
 	private Integer size;
+	
 
 	public Cliente find(Integer id)  {
 		
@@ -99,6 +101,20 @@ public class ClienteService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public Cliente findByEmail(String email) {
+		UserSS user = UserService.autenticated();
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+	
+		Cliente obj = repo.findByEmail(email);
+		if (obj == null) {
+			throw new ObjectNotFoundException(
+					"Objeto não encontrado! Id: " + user.getId() + ", Tipo: " + Cliente.class.getName());
+		}
+		return obj;
+	}
+	
 	public Cliente fromDTO(ClienteDTO objDto) {
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null, null);
 	}
@@ -138,7 +154,8 @@ public class ClienteService {
 		
 		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
 	}
-
+	
+	
 	
 	
 }
